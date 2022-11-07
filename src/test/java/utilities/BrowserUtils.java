@@ -126,6 +126,16 @@ for given duration
         Driver.getDriver().switchTo().window(origin);
     }
 
+
+    //wait till URL contains a specific text
+    public static void waitForTitleContains(String titlePart, int timeOut) {
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeOut);
+            wait.until(ExpectedConditions.titleContains(titlePart));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * Moves the mouse to given element
      *

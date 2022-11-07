@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -72,7 +73,7 @@ public class LoginPage {
     public void waitHomePage() {
         try {
             WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
-            wait.until(ExpectedConditions.titleIs("Dashboard"));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='javascript: void(0);']")));
         } catch (Exception e) {
             e.printStackTrace();
         }

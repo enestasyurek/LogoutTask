@@ -38,6 +38,7 @@ public class LogoutStepDef {
 
     @Then("The user should be on the {string} page")
     public void the_user_should_be_on_the_page(String excepctedPage) {
+        BrowserUtils.waitForTitleContains(excepctedPage,3);
         String actualPage = loginPage.getPageTitle();
         Assert.assertEquals(actualPage, excepctedPage);
     }
@@ -53,19 +54,17 @@ public class LogoutStepDef {
 
     @Then("The user closes the tabs")
     public void the_user_closes_the_tabs() {
-
         BrowserUtils.openNewTab();
 
         Set<String> windowHandles = Driver.getDriver().getWindowHandles();
         List<String> allOpenTabs = new ArrayList<>(windowHandles);
 
-        for (int i = 0; i < allOpenTabs.size() - 1; i++) {
+        //allOpenTabs.size()-1 --> don't close the empty tab
+        for (int i = 0; i < allOpenTabs.size()-1; i++) {
             Driver.getDriver().switchTo().window(allOpenTabs.get(i));
             Driver.getDriver().close();
         }
-        BrowserUtils.switchToWindow((0));
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-
+        BrowserUtils.switchToWindow(0);
 
     }
 
