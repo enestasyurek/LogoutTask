@@ -7,7 +7,6 @@ import org.junit.Assert;
 import pages.DashboardPage;
 import pages.LoginPage;
 import utilities.BrowserUtils;
-import utilities.ConfigurationReader;
 import utilities.Driver;
 
 import java.util.ArrayList;
